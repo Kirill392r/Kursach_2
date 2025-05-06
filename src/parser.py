@@ -9,7 +9,7 @@ class Parser(ABC):
     """
 
     @abstractmethod
-    def  load_vacancies(self, keyword: str) -> list[dict]:
+    def load_vacancies(self, keyword: str) -> list[dict]:
         """
         Метод для получения вакансий по ключевому слову.
         :param keyword: Ключевое слово для поиска.
