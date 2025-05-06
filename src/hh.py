@@ -13,7 +13,7 @@ class HeadHunterAPI(Parser):
         self.headers = {"User-Agent": "HH-User-Agent"}
         self.params = {"text": "", "page": 0, "per_page": 50}
 
-    def get_vacancies(self, keyword: str) -> list[dict]:
+    def load_vacancies(self, keyword: str) -> list[dict]:
         self.params["text"] = keyword
         self.params["page"] = 0
         all_vacancies = []
