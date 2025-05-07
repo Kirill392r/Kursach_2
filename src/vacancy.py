@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Any
 
 
 class Vacancy:
@@ -6,7 +6,7 @@ class Vacancy:
     Класс для представления вакансии с аттрибутами и методами.
     """
 
-    def __init__(self, title: str, url: str, salary: Optional[int], description: str):
+    def __init__(self, title: Any | None, url: Any | None, salary: Optional[int], description: str):
         """
         Инициализация объекта вакансии.
 
@@ -51,13 +51,15 @@ class Vacancy:
         """
         return self.salary < other.salary
 
-    def __eq__(self, other: "Vacancy") -> bool:
+    def __eq__(self, other: object) -> bool:
         """
         Проверка равенства вакансий по зарплате.
 
         :param other: Другая вакансия.
         :return: True, если зарплаты равны.
         """
+        if not isinstance(other, Vacancy):
+            return NotImplemented
         return self.salary == other.salary
 
     @classmethod
