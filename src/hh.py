@@ -18,7 +18,7 @@ class HeadHunterAPI(Parser):
         self.params["page"] = 0
         all_vacancies = []
 
-        for _ in range(20):
+        for _ in range(5):
             response = requests.get(self.url, headers=self.headers, params=self.params)
             if response.status_code != 200:
                 break
