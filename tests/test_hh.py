@@ -1,13 +1,24 @@
+from unittest.mock import Mock, patch
+
 import pytest
-from unittest.mock import patch, Mock
+
 from src.hh import HeadHunterAPI
+
 
 @pytest.fixture
 def sample_response():
     return {
         "items": [
-            {"id": "1", "name": "Python Developer", "snippet": {"requirement": "Опыт с Python"}},
-            {"id": "2", "name": "Backend Developer", "snippet": {"requirement": "Опыт с Django"}},
+            {
+                "id": "1",
+                "name": "Python Developer",
+                "snippet": {"requirement": "Опыт с Python"},
+            },
+            {
+                "id": "2",
+                "name": "Backend Developer",
+                "snippet": {"requirement": "Опыт с Django"},
+            },
         ]
     }
 

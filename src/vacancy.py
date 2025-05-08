@@ -1,4 +1,4 @@
-from typing import Optional, Any
+from typing import Any, Optional
 
 
 class Vacancy:
@@ -6,7 +6,13 @@ class Vacancy:
     Класс для представления вакансии с аттрибутами и методами.
     """
 
-    def __init__(self, title: Any | None, url: Any | None, salary: Optional[int], description: str):
+    def __init__(
+        self,
+        title: Any | None,
+        url: Any | None,
+        salary: Optional[int],
+        description: str,
+    ):
         """
         Инициализация объекта вакансии.
 
