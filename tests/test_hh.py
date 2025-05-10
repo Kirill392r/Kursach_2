@@ -22,6 +22,7 @@ def test_load_vacancies_success(mock_get, sample_response):
 def test_load_vacancies_api_error(mock_get):
     mock_response = Mock()
     mock_response.status_code = 500
+    mock_response.json.return_value = {"items": []}
     mock_get.return_value = mock_response
 
     api = HeadHunterAPI()

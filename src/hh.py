@@ -1,4 +1,5 @@
 import requests
+from requests.exceptions import RequestException
 
 from src.parser import Parser
 
@@ -22,14 +23,18 @@ class HeadHunterAPI(Parser):
         all_vacancies = []
 
         for _ in range(5):
-            response = requests.get(
-                self.__url, headers=self.__headers, params=self.__params
-            )
-            if response.status_code != 200:
-                break
-            data = response.json().get("items", [])
-            all_vacancies.extend(data)
-            self.__params["page"] += 1
+            try:
+                response = requests.get(
+                    self.__url, headers=self.__headers, params=self.__params
+                )
+                response.raise_for_status()
+                data = response.json().get("items", [])
+                all_vacancies.extend(data)
+                self.__params["page"] += 1
+            except RequestException:
+                return []
+            except ValueError:
+                return []
         return all_vacancies
 
     def load_vacancies(self, keyword: str) -> list[dict]:
