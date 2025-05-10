@@ -30,7 +30,7 @@ def get_vacancies_by_salary(
         low, high = map(int, salary_range.split("-"))
         return [v for v in vacancies if low <= v.salary <= high]
     except ValueError:
-        return vacancies
+        return []
 
 
 def sort_vacancies(vacancies: list[Vacancy]) -> list[Vacancy]:

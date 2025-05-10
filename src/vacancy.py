@@ -6,6 +6,8 @@ class Vacancy:
     Класс для представления вакансии с аттрибутами и методами.
     """
 
+    __slots__ = ("title", "url", "salary", "description")
+
     def __init__(
         self,
         title: Any | None,
@@ -23,11 +25,19 @@ class Vacancy:
         """
         self.title = title
         self.url = url
-        self.salary = self._parse_salary(salary)
+        self.salary = self.__parse_salary(salary)
         self.description = description
 
+    def to_dict(self) -> dict:
+        return {
+            "title": self.title,
+            "url": self.url,
+            "salary": self.salary,
+            "description": self.description,
+        }
+
     @staticmethod
-    def _parse_salary(salary: Optional[int]) -> int:
+    def __parse_salary(salary: Optional[int]) -> int:
         """
         Преобразование зарплаты в целое число. Если зарплата не указана, возвращает 0.
 
